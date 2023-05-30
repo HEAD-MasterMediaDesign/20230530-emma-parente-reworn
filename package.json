@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "serve": "parcel serve index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.1"
+  }
+}
