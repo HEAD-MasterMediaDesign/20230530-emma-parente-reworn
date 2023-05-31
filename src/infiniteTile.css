@@ -12,7 +12,6 @@
     box-sizing: border-box;
     min-height: 100vh;
     min-width: 100vw;
-    border: solid 2rem black;
 }
 
 .infinite-tile-container__tile.is-clone {

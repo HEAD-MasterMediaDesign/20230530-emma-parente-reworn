@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="utf-8">
+	<title>Site Web à grille bouclante</title>
+	<link rel="stylesheet" href="./infiniteTile.css" >
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.grid {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: grid;
+			grid-template-columns: repeat(3, 100vw);
+			grid-template-rows: repeat(3, 100vh);
+		}
+
+		.section {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 5em;
+		}
+
+		.section:nth-child(odd) {
+			background-color: #e0e0e0;
+		}
+
+		.section:nth-child(even) {
+			background-color: #f0f0f0;
+		}
+	</style>
+</head>
+<body>
+	<div class="grid">
+		<div class="section" style="grid-column: 3; grid-row: 3;">Section 1</div>
+        <div class="section" style="grid-column: 3; grid-row: 3;">Section 2</div>
+        <div class="section" style="grid-column: 3; grid-row: 3;">Section 3</div>
+        <div class="section" style="grid-column: 3; grid-row: 3;">Section 4</div>
+        <div class="section" style="grid-column: 3; grid-row: 3;">Section 5</div>
+        <div class="section" style="grid-column: 3; grid-row: 3;">Section 6</div>
+        <div class="section" style="grid-column: 3; grid-row: 3;">Section 7</div>
+	</div>
+
+	<script>
+		var grid = document.querySelector('.grid');
+		var sectionIndex = 0;
+
+		window.addEventListener('scroll', function() {
+			var scrollX = window.scrollX;
+			var scrollY = window.scrollY;
+
+			// Ajouter des sections supplémentaires à mesure que l'utilisateur navigue à travers le site
+			if (scrollY >= sectionIndex * window.innerHeight) {
+				sectionIndex++;
+				var newSection = document.createElement('div');
+				newSection.classList.add('section');
+				newSection.innerHTML = 'Section ' + (sectionIndex + 1);
+				grid.appendChild(newSection);
+			}
+
+			// Déplacer la grille pour créer un effet de défilement horizontal
+			grid.style.transform = 'translateX(' + (-scrollX % (grid.clientWidth / 3)) + 'px)';
+
+			// Répéter la grille verticalement et horizontalement pour créer un effet de boucle infinie
+			if (scrollX >= grid.clientWidth) {
+				window.scrollTo(scrollX % grid.clientWidth, scrollY + grid.clientHeight);
+			}
+
+			if (scrollY >= grid.clientHeight) {
+				window.scrollTo(scrollX + grid.clientWidth, scrollY % grid.clientHeight);
+			}
+		});
+	</script>
+</body>
+</html>
