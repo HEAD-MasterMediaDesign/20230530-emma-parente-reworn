@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "serve": "parcel serve src/index.html",
-    "build": "parcel build src/index.html"
+    "serve": "http-server -c-1 ./docs/"
   },
   "devDependencies": {
+    "http-server": "^14.1.1",
     "parcel": "^2.9.1"
   }
 }
