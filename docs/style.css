@@ -2,28 +2,33 @@
   font-family: 'terminal';
   src: url('./fonts/terminal-grotesque.ttf') format('truetype');
 }
-
 body {
     margin: 0;
     padding: 0;
    overflow:hidden;
     background-color: rgb(242, 242, 242);
 }
-
 p{
   font-family: terminal, helvetica, sans-serif;
   font-size: 1.05em;
 
+}
+a{
+  color: black;
+}
+a:visited{
+  color: black;
 }
 /********************GRILLE+CAMERA GALLERY*********************************/
 
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
+   
   }
 
   .grid-item {
-    background-color: rgb(242, 242, 242);
+    
     /*border: 1px solid #B22222;*/
     text-align: center;
     width: 100vw;
@@ -36,6 +41,7 @@ p{
     width: auto;
     height: 80vh;
   }
+
 
 /**********************MENU*******************************/
 
@@ -57,7 +63,7 @@ p{
   background-repeat: no-repeat;
   width: 80px;
   height: 130px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   position: fixed;
   bottom: 0;
   margin-left: -10px;
@@ -164,67 +170,78 @@ p{
   background-image: url(./images/logo.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   position: fixed;
   top: 0;
-  right: 180px;
+  right: 185px;
   z-index: 10;
-  transform: rotate(-140deg);
+  transform: rotate(-130deg);
 }
 
 /************************HOMEPAGE*****************************/
+
 .homepageimg{
   width: auto;
   height: 150vh;
 }
 .logo{
   width: auto ;
-  height: 300px ;
+  height: 250px ;
   display: block;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 200;
 }
-
 .texteintro{
-  font-size: 1.05em;
+  font-size: 1.2em;
   position: absolute;
   bottom: 0;
-  right: 15px;
-  text-align: right;
-  width: 60%;
-}
-
-/************************TUTOSPAGE*****************************/
-video{
-  border-radius: 20px;
-  height: 80vh;
-  margin-top: 30px;
-}
-
-.grid-container-tutos {
-  display: grid;
-  grid-template-columns: auto auto auto ;
-  width: 200vw;
-  height: 200vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.tutos{
-  background-color: rgb(242, 242, 242);
+  left: 50%;
+  transform: translate(-50%, 0);
   text-align: center;
-  width: 100vw;
-  height: 100vh;
-  align-self: center;
-  /*padding-left: 20px;
-  padding-right: 20px;
-  border: 10px solid rgb(242, 242, 242);*/
+  bottom: 85px;
+  width: 100%;
+}
+.tryitnow{
+  /*background-image: url(./images/tryitnow_blanc.svg) ;
+  background-repeat: no-repeat;
+  font-size: 2.8em;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  bottom: 35px;
+  width: 154px;
+  z-index: 2;*/
+  font-size: 1.7em;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  bottom: 20px;
+  width: 60%;
+  z-index: 2;
 
 }
+.motif{
+  height: 123%;
+  width: auto;
+  /*object-fit: contain;
+  max-width: 95vw;
+max-height: 95vh;*/
+object-fit: contain;
 
+}
+.motiflimite{
+  height: 81%;
+  width: auto;
+  object-fit: contain;
+
+}
+/************************TUTOSPAGE*****************************/
 .item9activetutos{
   background-image: url(./images/tutos_vecto.svg);
   background-size: contain;
@@ -239,26 +256,111 @@ video{
   transform: rotate(30deg);
 
 }
+.item9inactivetutos{
+  background-image: url(./images/tutos_vecto.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 55px;
+  margin-left: 65px;
+  z-index: 30;
+  transform: rotate(30deg);
+
+}
+
+video{
+  border-radius: 20px;
+  height: 75vh;
+  margin-top: 20px;
+    /*top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;*/
+  
+}
+/*
+.grid-container-tutos {
+  display: grid;
+  grid-template-columns: auto auto auto ;
+  width: 200vw;
+  height: 200vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}*/
+
+/*.tutos{
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  align-self: center;
+  /*padding-left: 20px;
+  padding-right: 20px;
+  border: 10px solid rgb(242, 242, 242);
+
+}*/
+
+
 
 
 /************************GALLERYSPAGE*****************************/
 .item9activegallery{
-  background-image: url(./images/gallery.svg);
+  background-image: url(./images/gallery_final.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100px;
-  height: 100px;
+  width: 55px;
+  height: 55px;
   position: fixed;
-  bottom: 0;
-  padding-bottom: 85px;
-  margin-left: 65px;
+  bottom: 65px;
+  right: 30px;
   z-index: 10;
-  transform: rotate(45deg);
+  transform: rotate(-25deg);
+}
+.item9inactivegallery{
+  background-image: url(./images/gallery_final.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 68px;
+  right: 43px;
+  z-index: 30;
+  transform: rotate(-45deg);
+}
+
+/************************EXPERIENCE PAGE*****************************/
+.item9activeexperience{
+  background-image: url(./images/generate.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 54px;
+  right: 35px;
+  z-index: 10;
+  transform: rotate(140deg);
+}
+
+.item9inactiveexperience{
+  background-image: url(./images/generate.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: 56px;
+  right: 40px;
+  z-index: 10;
+  transform: rotate(140deg);
 }
 
 
-
-/************************TUTOSPAGE*****************************/
+/************************GENERATED CLOTHES PAGES*****************************/
 .tshirt{
   max-width: 95vw;
   max-height: 95vh;
@@ -267,25 +369,61 @@ video{
 }
 
 
+/************************INSTRUCTIONS*****************************/
+.tools{
+  text-align: left;
+  font-size: 1.4em;
+}
 
+.itemtools{
+  background-image: url(./images/tools.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 75px;
+  height: 75px;
+  position: relative;
+  top: 50px;
+  right: 50px;
+  transform: rotate(0deg);
+}
 
+.toolsblock{
+  transform: translate(2%, -80%);
+}
 
+.instructions{
+  text-align: left;
+  width: 80%;
+  margin-left: 20px;
+  font-size: 1.4em;
+}
 
+.iteminstructions{
+  background-image: url(./images/steps.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 75px;
+  height: 75px;
+  position: relative;
+  top: 55px;
+  right: 30px;
+  transform: rotate(0deg);
+}
 
-
-
-
+.instructionsblock{
+  transform: translate(-10%, 30%);
+}
 
 
 
 /************************RESPONSIVE*****************************/
-
+/*
 @media screen and (max-width: 1000px) {
 
   /*.tutos {
     background-color: purple;
   }*/
-
+/*
   p{
     font-size: 1.9em;
   }
@@ -395,7 +533,7 @@ video{
   z-index: 200;
 }
 
-}
+}*/
 
 
 

@@ -19,5 +19,5 @@
 }
 
 .infinite-tile-container__tile.is-clone {
-    /*background: red;*/
+    background: transparent;
 }

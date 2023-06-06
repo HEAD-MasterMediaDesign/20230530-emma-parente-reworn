@@ -1,0 +1,93 @@
+/*****************POPUP EXPLICATIONS*********************/
+.popup{
+    background-color: rgb(242, 242, 242);
+    /*border: 1px solid black;*/
+    width: 75%;
+    padding: 15px 15px 0px 15px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 20px;
+    display: none;
+    text-align: center;
+  }
+  .popup button{    
+  text-align: center;
+  background-color: transparent;
+    font-size: 1.1em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+/*****************CAMERA*********************/
+.hidden{
+    display: none;
+}
+
+#cameraContainer{
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#videoPreview{
+    height: auto;
+    width: 98vw;
+    margin-left: 5px;
+   margin-top: 20%;
+}
+
+
+#imagePreview{
+    height: auto;
+    width: 98vw;
+    margin-left: 5px;
+    margin-top: 70%;
+}
+
+#captureButton{
+    background-color: rgba(255, 0, 0, 0);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 100px;
+    border-radius: 100px;
+    height: 60px;
+    width: 60px;
+    border: 4px double red;
+}
+
+#analyzing, #retry, #serverfail{
+    background-color: rgb(242, 242, 242);
+    width: 35%;
+    padding: 15px 15px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 300;
+}
+
+#croix, #croixserver{
+    background-image: url(./images/croix.svg);
+    z-index: 400;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    left: 92%;
+    top: 0;
+}
+
+
+
+
+
+
+
+
+
+  
