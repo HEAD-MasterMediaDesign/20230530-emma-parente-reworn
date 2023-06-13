@@ -1,17 +1,20 @@
 // Get the necessary elements
 const videoPreview = document.getElementById('videoPreview');
+const imageCloth = document.getElementById('imageCloth');
 const captureButton = document.getElementById('captureButton');
 const analyzingMessage = document.getElementById('analyzing');
 const retryMessage = document.getElementById('retry');
 const serverMessage = document.getElementById('serverfail');
 const imagePreview = document.getElementById('imagePreview');
 const clothTypeMessage = document.getElementById('clothtype');
+const validateButton = document.getElementById('validate');
+const retakeButton = document.getElementById('retake');
 let capturedImages = [];
 
 // Access the camera and display the preview
 navigator.mediaDevices.getUserMedia({ video:{ facingMode: 'environment'}})
   .then(stream => {
-    videoPreview.srcObject = stream; 
+    videoPreview.srcObject = stream;
   })
   .catch(error => {
     console.error('Error accessing the camera:', error);
@@ -30,6 +33,9 @@ captureButton.addEventListener('click', () => {
   canvas.width = videoPreview.videoWidth;
   canvas.height = videoPreview.videoHeight;
 
+  imageCloth.width = videoPreview.videoWidth;
+  imageCloth.height = videoPreview.videoHeight;
+
   // Draw the current video frame on the canvas
   context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
 
@@ -41,7 +47,7 @@ captureButton.addEventListener('click', () => {
 
   axios({
     method: "POST",
-    url: "https://outline.roboflow.com/wardrobe-detector/3",
+    url: "https://outline.roboflow.com/wardrobe-detector/4",
     params: {
         api_key: "3cOzkL0p6aYKJ9hgntqE"
     },
@@ -54,7 +60,7 @@ captureButton.addEventListener('click', () => {
   .then(function(response) {
     //console.log(response.data);
     processResult(response);
-  })  
+  })
     // si y'a une erreur
   .catch(function(error) {
     console.log(error.message);
@@ -71,6 +77,7 @@ function serverFailed(){
   serverMessage.classList.remove('hidden');
   videoPreview.classList.remove('hidden');
   imagePreview.classList.add('hidden');
+  imageCloth.classList.add('hidden');
 }
 
 
@@ -81,6 +88,7 @@ function startAnalysis(){
   serverMessage.classList.add('hidden');
   videoPreview.classList.add('hidden');
   imagePreview.classList.remove('hidden');
+  imageCloth.classList.add('hidden');
 }
 
 function redoCamera(){
@@ -90,43 +98,82 @@ function redoCamera(){
   serverMessage.classList.add('hidden');
   videoPreview.classList.remove('hidden');
   imagePreview.classList.add('hidden');
+  imageCloth.classList.add('hidden');
 }
 
 function processResult(response){
+  analyzingMessage.classList.add('hidden');
 
   const data = response.data;
 
-  //si pas eu d'objet trouvé 
+  //si pas eu d'objet trouvé
   if(data.predictions.length == 0){
     //afficher pop up retake
     redoCamera();
+    console.log("redo");
+    console.log(data);
   }
   else{
     foundCloth(data);
+    console.log("found");
   }
 
 }
 
 
 function foundCloth(data){
+  videoPreview.classList.add('hidden');
+  imagePreview.classList.add('hidden');
+  imageCloth.classList.remove('hidden');
+  validateButton.classList.remove('hidden');
+  retakeButton.classList.remove('hidden');
 
   let prediction = data.predictions[0];
   clothTypeMessage.textContent = prediction.class;
-  console.log(data.predictions);
+
+
   // draw blob thing
   let points = prediction.points;
+  console.log(points);
+  const clothContext = imageCloth.getContext('2d');
 
-  const context = imagePreview.getContext('2d');
 
-  // draw into context
-  let cpath = `M${points[0].x},${points[0].y}`;
+  // let cameraImage = imagePreview.cloneNode(true);
+  // let cameraContext = cameraImage.getContext('2d');
+
+  // context.clearRect(0,0,imagePreview.width, imagePreview.height);
+  clothContext.beginPath();
+  clothContext.moveTo(points[0].x, points[0].y);
+
   for(let i=1; i<points.length; i++) {
-    cpath += `S${points[i-1].x},${points[i-1].y}, ${points[i].x},${points[i].y}`;
+    clothContext.lineTo(points[i].x, points[i].y);
   }
-  cpath += "Z";
-  let p = new Path2D(cpath);
-  context.clearRect(0, 0, imagePreview.width, imagePreview.height);
-  context.fillStyle = "rgb(255, 0, 255)";
-  context.fill(p);
+
+clothContext.clip();
+clothContext.drawImage(imagePreview, 0,0);
+clothContext.restore();
+  // context.drawImage(cameraImage, 0, 0);
+  // context.restore();
+ console.log("reussi");
+  //context.fill();
+  clothContext.strokeStyle ="fuchsia";
+  clothContext.stroke();
+
+
+
+
+  // // draw into context
+  // let cpath = `M${points[0].x},${points[0].y}`;
+  // for(let i=1; i<points.length; i++) {
+  //   cpath += `S${points[i-1].x},${points[i-1].y}, ${points[i].x},${points[i].y}`;
+  // }
+  // cpath += "Z";
+  // let p = new Path2D(cpath);
+  // context.clearRect(0, 0, imagePreview.width, imagePreview.height);
+  // context.fillStyle = "rgb(255, 0, 255)";
+  // context.fill(p);
+
+
+
 
 }

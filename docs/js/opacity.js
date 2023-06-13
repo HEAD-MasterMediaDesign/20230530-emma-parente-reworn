@@ -10,17 +10,12 @@ window.addEventListener("load", function(){
 document.querySelector("#close").addEventListener("click", function(){
     document.querySelector(".popup").style.display = "none";
 });
-  
-//element pour fermer pop-up retry et server failed
-document.querySelector("#croix").addEventListener("click", function(){
-    document.querySelector("#retry").style.display = "none";
+
+var bodyparts = document.querySelectorAll(".bodypart");
+
+bodyparts.forEach(function(bodypart) {
+    bodypart.addEventListener("click", function() {
+        var currentOpacity = parseFloat(this.style.opacity);
+        this.style.opacity = currentOpacity.toFixed(1) === '0.6' ? '1' : '0.6';
+    });
 });
-
-document.querySelector("#croixserver").addEventListener("click", function(){
-    document.querySelector("#serverfail").style.display = "none";
-});
-
-
-
-
-

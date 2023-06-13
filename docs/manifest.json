@@ -5,8 +5,8 @@
   "background_color": "#F2F2F2",
   "display": "fullScreen",
   "orientation": "portrait",
-  "scope": "reworn.emmaparente.ch/",
-  "start_url": "reworn.emmaparente.ch/",
+  "scope": "/",
+  "start_url": "/",
   "id": "/?source=pwa&v=1",
   "icons": [
     {

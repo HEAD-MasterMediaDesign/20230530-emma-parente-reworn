@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Camera Capture</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>camera capture</title>
+  <!--<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./camera.css" />
   <meta charset="UTF-8">
@@ -38,30 +38,14 @@
 </div>
 
 
-
-
-
-
-<!---------------------------POP UP EXPLICATIONS------------------------------------->
-<div class="popup">
-  
-  <p>
-    1. Choose a garment from the clothing rack, place it on the hook.<br>
-    2. Take a picture of it. <br>
-    3. Specify some desires. <br>
-    4. Let AI suggest new possibilities of wearing it.
-  </p>
-  <button id="close"><p>OK</p></button>
-</div>
-
 <!---------------------------------CAMERA ACCESS-------------------------------------->
 
 
   <div id="cameraContainer">
     <video id="videoPreview" autoplay></video>
-    <!-- <img id="imagePreview" class="hidden"></img> -->
+    <!-- <img id="imagePreview" class="hidden"></img>
     <canvas id="imagePreview" class="hidden" width="320" height="240"></canvas>
-    <canvas id="imageCloth" class="hidden" width="320" height="240"></canvas>
+    <canvas id="imageCloth" class="hidden" width="320" height="240"></canvas> -->
   </div>
 
   <button id="captureButton"></button>
@@ -71,10 +55,9 @@
   <div id="serverfail" class="hidden"><div id="croixserver"></div><p>server failed</p></div>
 
   <div><p id="clothtype">...</p></div>
-  <a href="./bodyparts.html"><div id="validate" class="hidden"><p></p></div></a>
+  <a href="./tshirt.html"><div id="validate" class="hidden"><p></p></div></a>
   <a href="./camera.html"><div id="retake" class="hidden"><p></p></div></a>
 
-  <script src="js/main.js" ></script>
-  <script src="js/script.js"></script>
+  <script src="js/sharecamera.js" ></script>
 </body>
 </html>

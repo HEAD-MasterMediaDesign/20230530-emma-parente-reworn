@@ -11,6 +11,7 @@
     border-radius: 20px;
     display: none;
     text-align: center;
+    z-index: 2000;
   }
   .popup button{    
   text-align: center;
@@ -19,6 +20,7 @@
     border: none;
     outline: none;
     cursor: pointer;
+    
   }
 
 /*****************CAMERA*********************/
@@ -32,20 +34,14 @@
 
 }
 
-#videoPreview{
+#videoPreview, #imagePreview, #imageCloth{
     height: auto;
     width: 98vw;
     margin-left: 5px;
-   margin-top: 20%;
+    margin-top: 20%;
 }
 
 
-#imagePreview{
-    height: auto;
-    width: 98vw;
-    margin-left: 5px;
-    margin-top: 70%;
-}
 
 #captureButton{
     background-color: rgba(255, 0, 0, 0);
@@ -81,6 +77,42 @@
     left: 92%;
     top: 0;
 }
+
+#validate{
+    background-image: url(./images/validate.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    bottom: 140px;
+    right: 60px;
+    transform: rotate(0deg);
+    z-index: 200;
+    animation: rotate0 12s infinite linear;
+}
+@keyframes rotate0 {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+  #retake{
+    background-image: url(./images/retake_pic.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    bottom: 140px;
+    left: 60px;
+    transform: rotate(0deg);
+  }
+
 
 
 
