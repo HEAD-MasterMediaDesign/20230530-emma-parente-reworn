@@ -15,7 +15,7 @@ function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(
 var _set_createGridTiles = /*#__PURE__*/new WeakSet();
 var _set_createGridTiles_addElementAfterTileRef = /*#__PURE__*/new WeakSet();
 var _set_addScrollListener = /*#__PURE__*/new WeakSet();
-var InfiniteTile = /*#__PURE__*/_createClass(
+var InfiniteTileV2 = /*#__PURE__*/_createClass(
 // infiniteTileContainer
 // tileRef
 
@@ -83,7 +83,7 @@ function _set_addScrollListener2() {
 }
 
 
-new InfiniteTile(
+new InfiniteTileV2(
     document.querySelector('.infinite-tile-container'),
     document.querySelector('.infinite-tile-container__tile'),
 )
