@@ -11,6 +11,8 @@ const validateButton = document.getElementById('validate');
 const retakeButton = document.getElementById('retake');
 let capturedImages = [];
 
+let clothTypeFinding = ""
+
 // Access the camera and display the preview
 navigator.mediaDevices.getUserMedia({ video:{ facingMode: 'environment'}})
   .then(stream => {
@@ -106,8 +108,10 @@ function processResult(response){
 
   const data = response.data;
 
+
+
   //si pas eu d'objet trouvé
-  if(data.predictions.length == 0){
+  if(data.predictions.length === 0){
     //afficher pop up retake
     redoCamera();
     console.log("redo");
@@ -130,6 +134,7 @@ function foundCloth(data){
 
   let prediction = data.predictions[0];
   clothTypeMessage.textContent = prediction.class;
+  clothTypeFinding = prediction.class
 
 
   // draw blob thing
@@ -176,4 +181,28 @@ clothContext.restore();
 
 
 
+}
+
+/**
+ * @location location {string}
+ */
+function goToPage(location) {
+  const url = new URL(window.location.host + location)
+  url.searchParams.set('objectName', clothTypeFinding)
+  console.log(`${window.location.protocol}//${url.href}`)
+
+  window.location = `${window.location.protocol}//${url.href}`
+}
+
+function goToPageUse_objectName_locationQuery() {
+
+  const objectName = new URLSearchParams(window.location.search).get('objectName')
+
+  if      (objectName === 'dress')        location = '/dress.html'
+  else if (objectName === 'tshirt')       location = '/tshirt.html'
+  else if (objectName === 'pants')        location = '/pants.html'
+
+  const url = new URL(window.location.host + location)
+
+  window.location = `${window.location.protocol}//${url.href}`
 }
