@@ -63,6 +63,24 @@
 
 </body>
 
+<script>
+    function addImageFromLocalStorage() {
+        for(let i = 0; i < localStorage.length; i++) {
+            const imageData = localStorage.getItem( localStorage.key(i) )
+
+            const imageContainer = document.createElement('div')
+
+            imageContainer.innerHTML = `
+        <div class="grid-item">
+            <img class="imggallery" src="${imageData}" alt="" style="transform: translate(-5%, -10%)">
+        </div>
+    `
+            document.querySelector('.add-images-from-local_storage').appendChild(imageContainer.querySelector('div'))
+        }
+    }
+    addImageFromLocalStorage()
+</script>
+
 <script src="./infiniteTile-v2.js" ></script>
 
 </html>

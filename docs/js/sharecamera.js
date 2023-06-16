@@ -22,18 +22,19 @@ captureButton.addEventListener('click', () => {
   context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
   const imageData = canvas.toDataURL('image/png');
 
-  // Send the image data to the server
-  fetch('/uploadImage', {
-    method: 'POST',
-    body: JSON.stringify({ image: imageData }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => {
-    // Handle the server response
-  })
-  .catch(error => {
-    // Handle errors
-  });
+  try {
+    saveImageInLocalStorage(imageData)
+  } catch (e) {
+    localStorage.clear()
+    saveImageInLocalStorage(imageData)
+  }
+
 });
+
+function saveImageInLocalStorage(imageData) {
+  localStorage.setItem(
+      `image_${localStorage.length}`,
+      imageData,
+  )
+}
+
