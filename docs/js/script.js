@@ -13,6 +13,7 @@ let capturedImages = [];
 
 let clothTypeFinding = ""
 
+if (videoPreview) { 
 // Access the camera and display the preview
 navigator.mediaDevices.getUserMedia({ video:{ facingMode: 'environment'}})
   .then(stream => {
@@ -21,7 +22,9 @@ navigator.mediaDevices.getUserMedia({ video:{ facingMode: 'environment'}})
   .catch(error => {
     console.error('Error accessing the camera:', error);
   });
+}
 
+  if (captureButton) { 
 // Capture and store the image when the button is clicked
 captureButton.addEventListener('click', () => {
 
@@ -70,7 +73,7 @@ captureButton.addEventListener('click', () => {
   });
 
 });
-
+}
 
 function serverFailed(){
   analyzingMessage.classList.add('hidden');
@@ -132,9 +135,12 @@ function foundCloth(data){
   validateButton.classList.remove('hidden');
   retakeButton.classList.remove('hidden');
 
+
+
   let prediction = data.predictions[0];
-  clothTypeMessage.textContent = prediction.class;
-  clothTypeFinding = prediction.class
+  clothTypeMessage.textContent = "Detected cloth: " + prediction.class;
+  clothTypeFinding = prediction.class;
+
 
 
   // draw blob thing
@@ -183,26 +189,57 @@ clothContext.restore();
 
 }
 
+// /**
+//  * @location location {string}
+//  */
+// function goToPage(location) {
+//   const url = new URL(window.location.host + location)
+//   url.searchParams.set('objectName', clothTypeFinding)
+//   console.log(`${window.location.protocol}//${url.href}`)
+
+//   window.location = `${window.location.protocol}//${url.href}`
+// }
+
+// function goToPageUse_objectName_locationQuery() {
+
+//   const objectName = new URLSearchParams(window.location.search).get('objectName')
+
+//   if      (objectName === 'dress')        location = '/dress.html'
+//   else if (objectName === 'tshirt')       location = '/tshirt.html'
+//   else if (objectName === 'pants')        location = '/pants.html'
+
+//   const url = new URL(window.location.host + location)
+
+//   window.location = `${window.location.protocol}//${url.href}`
+// }
+
+
 /**
  * @location location {string}
  */
 function goToPage(location) {
-  const url = new URL(window.location.host + location)
-  url.searchParams.set('objectName', clothTypeFinding)
-  console.log(`${window.location.protocol}//${url.href}`)
+  const url = new URL(`${window.location.protocol}//${window.location.host}${location}`);
+  url.searchParams.set('objectName', clothTypeFinding);
+  console.log(url.href);
 
-  window.location = `${window.location.protocol}//${url.href}`
+  window.location.href = url.href;
 }
 
 function goToPageUse_objectName_locationQuery() {
+  const objectName = new URLSearchParams(window.location.search).get('objectName');
+  let location = '';
 
-  const objectName = new URLSearchParams(window.location.search).get('objectName')
+  if (objectName === 'dress') {
+    location = '/dress.html';
+  } else if (objectName === 'shirt') {
+    location = '/tshirt.html';
+  } else if (objectName === 'tshirt') {
+    location = '/tshirt.html';
+  } else if (objectName === 'pants') {
+    location = '/pants.html';
+  }
 
-  if      (objectName === 'dress')        location = '/dress.html'
-  else if (objectName === 'tshirt')       location = '/tshirt.html'
-  else if (objectName === 'pants')        location = '/pants.html'
-
-  const url = new URL(window.location.host + location)
-
-  window.location = `${window.location.protocol}//${url.href}`
+  const url = new URL(`${window.location.protocol}//${window.location.host}${location}`);
+  window.location.href = url.href;
 }
+

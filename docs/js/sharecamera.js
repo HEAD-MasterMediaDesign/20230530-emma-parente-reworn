@@ -7,7 +7,6 @@ const captureButton = document.getElementById('captureButton');
 // Access the camera and display the preview
 navigator.mediaDevices.getUserMedia({ video:{ facingMode: 'environment'}})
   .then(stream => {
-    console.log('hello')
     videoPreview.srcObject = stream;
   })
   .catch(error => {

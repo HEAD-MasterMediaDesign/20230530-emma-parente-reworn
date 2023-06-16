@@ -111,6 +111,14 @@
     bottom: 140px;
     left: 60px;
     transform: rotate(0deg);
+    animation: rotate0 12s infinite linear;
+  }
+
+  #clothtype {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 325px;
   }
 
 
