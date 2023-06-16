@@ -666,3 +666,21 @@ margin-left: 25px;
 }
 
 
+#image-capture {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  display: none;
+}
+
+.image-capture-is-open #image-capture {
+  display: block;
+}
+
+#image-capture_img-container img {
+  width: 20vw;
+  height: 50vh;
+  object-fit: contain;
+}
