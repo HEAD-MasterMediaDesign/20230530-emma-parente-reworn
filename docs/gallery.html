@@ -73,9 +73,11 @@
             imageContainer.innerHTML = `
         <div class="grid-item">
             <img class="imggallery" src="${imageData}" alt="" style="transform: translate(-5%, -10%)">
-        </div>
-    `
-            document.querySelector('.add-images-from-local_storage').appendChild(imageContainer.querySelector('div'))
+        </div>`
+
+            const container = document.querySelector('.add-images-from-local_storage')
+
+            container.insertBefore(imageContainer.querySelector('div'), container.firstElementChild)
         }
     }
     addImageFromLocalStorage()
